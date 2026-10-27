@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mail Track</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="logo">✓✓</div>
+    <div class="brand">Mail Track</div>
+    <div id="who" class="who"></div>
+  </header>
+
+  <!-- Signed out -->
+  <section id="auth" hidden>
+    <div class="tabs">
+      <button type="button" class="tab active" data-mode="login">Sign in</button>
+      <button type="button" class="tab" data-mode="register">Create free account</button>
+    </div>
+    <form id="authForm">
+      <label id="nameRow" hidden>Name<input name="name" autocomplete="name"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Password<input name="password" type="password" required minlength="8" autocomplete="current-password"></label>
+      <button class="primary" type="submit" id="authBtn">Sign in</button>
+      <p id="authError" class="error" hidden></p>
+    </form>
+  </section>
+
+  <!-- Signed in -->
+  <section id="main" hidden>
+    <div class="stats">
+      <div><b id="sSent">–</b><span>Sent</span></div>
+      <div><b id="sOpen">–</b><span>Opened</span></div>
+      <div><b id="sClick">–</b><span>Clicked</span></div>
+    </div>
+    <p class="muted small">Last 30 days</p>
+
+    <h2>Latest activity <button type="button" id="refresh" class="link">Refresh</button></h2>
+    <ul id="feed" class="feed"></ul>
+  </section>
+
+  <details id="settingsBox">
+    <summary>Settings</summary>
+    <label class="check"><input type="checkbox" id="trackByDefault"> Track new emails by default</label>
+    <label class="check"><input type="checkbox" id="trackLinks"> Track link clicks</label>
+    <label class="check"><input type="checkbox" id="notify"> Notify me when an email is opened</label>
+    <label>Server<input id="server" placeholder="https://track.yourdomain.com"></label>
+    <div class="row">
+      <button type="button" id="save" class="secondary">Save</button>
+      <button type="button" id="signOut" class="link danger" hidden>Sign out</button>
+    </div>
+    <p id="saved" class="muted small" hidden>Saved.</p>
+  </details>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
